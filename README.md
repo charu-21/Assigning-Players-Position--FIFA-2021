@@ -8,7 +8,7 @@
 - Modeling Phase
 - Results
 - PCA
-- Conclusions
+
 
 ## Introduction
 FIFA is a series of association football simulation video games developed and released annually by Electronic Arts under the EA Sports label. Career Mode sees the gamer take control of an already existing team, and they play matches in a standard season format against the computer. The player can make transfers, control finances and tailor pre-season matches in numerous ways. Different skills set determine the position they play on the field.
