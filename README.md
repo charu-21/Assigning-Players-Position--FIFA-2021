@@ -7,6 +7,7 @@
 - Balancing the data(SMOTE) & Player Classification
 - Modeling Phase
 - Results
+- PCA
 - Conclusions
 
 ## Introduction
@@ -32,4 +33,28 @@ The dataset is acquired from Kaggle. The dataset provided include the players in
     * Goalkeepers: GK
  - Defining a Function for bucketing the positions of the players in the respective categories mentioned above. 
  - In case any player has more than 2 position, then with the help of the function we would be able to bucket the position of the player as per the maximum count of the repeated position.
- - For instance Player 51 plays in 3 positions (CAM,CF,ST). CF & ST are categorised under Attackers whereas CAM as Midfielders. So Player 51 should be categorised as Attacker as it is repeated twice.
+ - There are more midfielders and defenders than attackers and goalkeepers.
+ 
+ ## Balancing the data(SMOTE) & Player Classification
+ - SMOTE creates synthetic observations of the minority class by:
+    * Finding the k-nearest-neighbors for minority class observations (finding similar observations)
+    * Randomly choosing one of the k-nearest-neighbors and using it to create a similar, but randomly tweaked, new observation.
+    * Sampling Strategy used is “minority”, which means that only the class which has less number of observations would be oversampled. In our case Class 3 have been oversampled from 1460 to 4970 observations.
+    
+## Modeling Phase
+- Splitted dataset into into random train and test subset of ratio 70:30
+- Diiferent models using K-Fold Cross Validation were build, where XGB Classifier outperformed.
+
+## Result before PCA
+- XGB Classifier has improved the scoring be it Recall, Precision, F-1 or Accuracy. Using the XGB Classifier ,it can be said that model is 90.6% accurate.
+- The final model was very well able to increase the Recall Score for Attackers ,Midfielders, Defenders by 1%(in comparision to Logistic regression, which was the base model). Below are the results for the same:
+    * 78% Attackers were correctly classified.
+    * 87% Midfielders were correctly classified
+    * 94% Defenders were correctly classified.
+    
+## PCA
+- Because of severe multicolinearity between the independent features, dimensionality reduction technique known as PCA was applied.
+### Result after applying PCA
+- After applying PCA we can observe that with just 27 PCA Components we were able to get 99.9% of Training Accuracy and 90.1% of Testing Accuracy.
+- PCA also helped to reduce the multicolinearity which was present b/w the independent features.
+
